@@ -1,0 +1,304 @@
+{
+  "repo_notes": [
+    {
+      "content": "请使用中文深入详尽地针对仓库内的算子进行完整的刨析"
+    }
+  ],
+  "pages": [
+    {
+      "title": "概览",
+      "purpose": "介绍 DeepGEMM，作为一款支持 FP8/BF16/FP4 数据类型的高性能深度学习 GEMM 库，阐明其核心特性，包括即时编译与架构专项优化，并提供指向入门指南和核心概念子页面的链接。",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "入门指南",
+      "purpose": "引导用户完成 DeepGEMM 的安装、基本用法示例以及首次 GEMM 运算。涵盖环境要求、通过 develop.sh 进行的开发环境设置以及 install.sh 安装方法。",
+      "parent": "概览",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "核心概念",
+      "purpose": "阐释基础概念：FP8/BF16/FP4 数据类型、缩放因子、GEMM 变体（NT/NN/TN/TT）、分组运算、TMA 对齐、UE8M0 打包以及 MoE 专用布局。",
+      "parent": "概览",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Python API 参考",
+      "purpose": "面向 Python 的完整 API 参考，涵盖 deep_gemm 包暴露的所有接口。提供所有函数族的概览，并链接至各类别的子页面。",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "GEMM 运算",
+      "purpose": "记录所有 GEMM 函数：fp8_gemm_、fp8_fp4_gemm_、bf16_gemm_、m_grouped_、k_grouped_、cublaslt_gemm_、fp8_gemm_nt_skip_head_mid，以及其参数、布局要求和 SM90/SM100 支持矩阵。涵盖为 Blackwell 架构引入的 FP8/FP4 混合精度变体。",
+      "parent": "Python API 参考",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "注意力运算",
+      "purpose": "记录注意力内核：fp8_mqa_logits、fp8_paged_mqa_logits、fp8_fp4_mqa_logits、fp8_fp4_paged_mqa_logits、get_paged_mqa_logits_metadata，以及服务于 DeepSeek v3.2 闪电索引器的加权 ReLU MQA logit 计算。涵盖既有的纯 FP8 版本和新引入的 FP8/FP4 混合精度变体。",
+      "parent": "Python API 参考",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Einsum 运算",
+      "purpose": "记录 einsum 与 fp8_einsum 函数，涵盖所有支持的表达式模式（bmk,bnk->mn；bhr,hdr->bhd；bhd,hdr->bhr；bhd,bhr->hdr）、BF16 与 FP8 批量矩阵乘法的语义，以及 use_cublaslt 选项。",
+      "parent": "Python API 参考",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Hyperconnection 运算",
+      "purpose": "记录用于 DeepSeek hyperconnection 的 tf32_hc_prenorm_gemm 内核：执行 TF32 GEMM 的同时完成平方和计算，涵盖 num_splits 参数、SM90/SM100 调度及其使用模式。",
+      "parent": "Python API 参考",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Mega MoE 运算",
+      "purpose": "记录 Mega MoE 融合内核 API：get_symm_buffer_for_mega_moe、transform_weights_for_mega_moe、fp8_fp4_mega_moe 以及 SymmBuffer 类。阐释对称内存分配、权重预处理，以及面向多 GPU MoE 推理的融合“EP 分发 + Linear1 + SwiGLU + Linear2 + EP 合并”执行模型。",
+      "parent": "Python API 参考",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "布局与工具函数",
+      "purpose": "记录用于张量布局转换、TMA 对齐以及缩放因子准备的实用函数：transform_sf_into_required_layout、get_tma_aligned_size、get_mk_alignment_for_contiguous_layout、get_mn_major_tma_aligned_tensor、get_mn_major_tma_aligned_packed_ue8m0_tensor 以及 k_grouped 打包。",
+      "parent": "Python API 参考",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "配置与环境变量",
+      "purpose": "记录配置函数（set_num_sms、get_num_sms、set_tc_util、get_tc_util、set_pdl、get_pdl、set_ignore_compile_dims、set_block_size_multiple_of）及所有环境变量（DG_JIT_*、DG_PRINT_CONFIGS 等），并说明其默认值与效果。",
+      "parent": "Python API 参考",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "架构",
+      "purpose": "全面概述 DeepGEMM 的内部架构与设计原则。总结 Python/C++ API 层、JIT 系统、内核层次结构与硬件支持，并链接至各子页面以了解具体细节。",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "系统架构概览",
+      "purpose": "高层级系统设计：Python/C++ API 层、JIT 编译系统、内核实现以及外部依赖（CUTLASS、CuTe、fmt）。阐释从 Python 调用到 GPU 执行的完整流程。",
+      "parent": "架构",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "JIT 编译流水线",
+      "purpose": "详细说明 JIT 编译过程：内核生成、缓存策略、NVCC 与 NVRTC 后端对比、PCH 支持、SASS 反汇编，以及 Compiler/NVCCCompiler/NVRTCCompiler 类层次结构。",
+      "parent": "架构",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Mega MoE 架构",
+      "purpose": "深入剖析 Mega MoE 子系统架构：融合的“EP 分发 + 双线性 + 激活 + EP 合并”内核设计、对称内存布局（SymBuffer）、用于在 SM 间分发块的 MegaMoEScheduler、FP8/FP4 混合精度计算流水线、NVLink 通信重叠策略，以及用于选取 MegaMoEConfig 参数的启发式系统。",
+      "parent": "架构",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "硬件架构支持",
+      "purpose": "阐释 SM90/SM100 架构专项优化、ArchSpec 抽象、DeviceRuntime 类、运行时架构检测，以及面向不同 CUDA 版本的兼容层。",
+      "parent": "架构",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "内存与数据布局",
+      "purpose": "阐释内存层级结构、TMA 对齐要求、缩放因子布局、MN-major 与 K-major 的对比、UE8M0 打包、SM100 上的 TMEM（张量内存）、共享内存交错模式，以及 Mega MoE 所采用的对称内存布局。",
+      "parent": "架构",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "启发式策略与自动调优",
+      "purpose": "阐释用于选择最优内核配置的启发式系统：块大小、流水线级数、线程数、共享内存分配。涵盖面向 SM90 与 SM100 的启发式算法、Mega MoE 启发式算法、DG_PRINT_CONFIGS 以及调优器。",
+      "parent": "架构",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "工作调度与分发",
+      "purpose": "阐释用于在 GPU 上分发 GEMM 块的调度器系统、面向二级缓存优化的交织编排、持久线程调度、MoE 分组 GEMM 的 TMA 多播兼容性，以及用于 EP 与计算重叠调度的 MegaMoEScheduler。",
+      "parent": "架构",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "内核实现",
+      "purpose": "深入探讨 CUDA 内核实现与优化技术。概述 SM90/SM100 内核族，并链接至各架构与内核类型的子页面。",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "SM90 内核实现",
+      "purpose": "记录 SM90（Hopper）专用内核：FP8 GEMM 1D1D 与 1D2D 变体、BF16 GEMM、WGMMA 用法、共享内存管理，以及 fp8_gemm.cuh 调度层。",
+      "parent": "内核实现",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "SM100 内核实现",
+      "purpose": "记录 SM100（Blackwell）专用内核：FP8/FP4 GEMM 1D1D 变体（包括纯 FP8 和混合 FP8/FP4 版本）、BF16 GEMM、TF32 hyperconnection GEMM、UMMA 指令、张量内存用法以及 UE8M0 缩放因子处理。",
+      "parent": "内核实现",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "MQA 内核实现",
+      "purpose": "详细说明多头查询注意力 logits 内核：面向 SM90 与 SM100 的标准及分页变体、纯 FP8 与 FP8/FP4 混合精度变体、线程束特化（TMA/UMMA/Math 线程束）、屏障同步、分页 KV 缓存调度以及加权 ReLU logit 公式。",
+      "parent": "内核实现",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Mega MoE 内核实现",
+      "purpose": "详细说明 sm100_fp8_fp4_mega_moe_impl 内核：三种不同角色的线程束特化（分发线程束、MMA 非收尾线程束、收尾线程束组）、FP8/FP4 混合精度计算流水线、对称缓冲区布局、通过 MegaMoEScheduler 实现的 NVLink 通信重叠、采用 FP8 重新量化的 SwiGLU 激活，以及双层线性融合执行。",
+      "parent": "内核实现",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "内存管理与同步",
+      "purpose": "阐释 TMA 操作、流水线暂存、屏障同步模式（满/空屏障、ClusterTransactionBarrier）、共享内存分配、SM100 上的 TMEM 分配以及收尾流水线。",
+      "parent": "内核实现",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "构建与开发",
+      "purpose": "提供构建、测试和扩展 DeepGEMM 的指南。概览构建系统、CI/CD、测试框架与扩展点，并链接至各子页面以获取详细信息。",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "从源码构建",
+      "purpose": "说明 setup.py、构建选项（DG_SKIP_CUDA_BUILD、DG_FORCE_BUILD、DG_USE_LOCAL_VERSION）、依赖项、用于 IDE 支持的 CMake 配置、develop.sh 与 install.sh 工作流的差异，以及为支持 JIT 而进行的头文件聚合。",
+      "parent": "构建与开发",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "分发与 CI/CD",
+      "purpose": "记录 wheel 构建矩阵、GitHub Actions 工作流（publish.yml、build.yml、_build.yml、_build_in_container.yml）、PyPI 部署、NGC 镜像检查以及缓存的 wheel 分发策略。",
+      "parent": "构建与开发",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "测试框架",
+      "purpose": "说明测试的组织方式（test_core.py、test_fp8.py、test_fp8_fp4.py、test_bf16.py、test_attention.py、test_einsum.py、test_hyperconnection.py、test_layout.py、test_legacy.py、test_sanitizer.py、test_mega_moe.py）、参考实现、generators.py、使用 bench_kineto 进行的性能基准测试，以及相关验证策略。",
+      "parent": "构建与开发",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "JIT 系统内部机制",
+      "purpose": "深入探讨 JIT 编译：LaunchRuntime 抽象、通过 generate_impl 生成内核代码、Handle 类型（LibraryHandle/KernelHandle）、缓存机制、延迟 CUDA 驱动加载，以及 Python 端的 compiler/runtime 模块。",
+      "parent": "构建与开发",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}
